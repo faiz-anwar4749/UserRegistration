@@ -80,7 +80,7 @@ namespace UserRegistration
         }
         public static void PasswordCheck(string pass1)
         {
-            string pattern = "^(?=.*[A-Z])[0-9a-zA-Z]{8,}$";
+            string pattern = "^(?=.*[A-Z])(?=.*[0-9])[0-9a-zA-Z]{8,}$";
             bool validate = Regex.IsMatch(pass1, pattern);
             if (validate)
             {
@@ -88,7 +88,7 @@ namespace UserRegistration
             }
             else
             {
-                Console.WriteLine("User Password is Invalid. The password must be of atleast 8 characters and should have atleast one upper case.");
+                Console.WriteLine("User Password is Invalid. The password must be of atleast 8 characters and should have atleast one upper case and a numeric character.");
             }
         }
     }
