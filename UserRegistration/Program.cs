@@ -14,6 +14,9 @@ namespace UserRegistration
             Console.Write("Enter User Last Name: ");
             string lastName = Console.ReadLine();
             LastNameCheck(lastName);
+            Console.Write("Enter User Email ID: ");
+            string emailID = Console.ReadLine();
+            EmailCheck(emailID);
         }
         public static void FirstNameCheck(string firstName)
         {
@@ -41,6 +44,19 @@ namespace UserRegistration
             else
             {
                 Console.WriteLine("User Last Name is Invalid.");
+            }
+        }
+        public static void EmailCheck(string emailID)
+        {
+            string pattern = "(^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*[@][0-9a-zA-Z]+[.][a-zA-Z]{2,3}(.[a-zA-Z]{2})?$)";
+            bool validate = Regex.IsMatch(emailID, pattern);
+            if (validate)
+            {
+                Console.WriteLine("User Email entered successfully");
+            }
+            else
+            {
+                Console.WriteLine("User Email is invalid.");
             }
         }
     }
