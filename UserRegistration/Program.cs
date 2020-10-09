@@ -20,6 +20,9 @@ namespace UserRegistration
             Console.Write("Enter User Mobile Number: ");
             string mobile = Console.ReadLine();
             MobileNumberCheck(mobile);
+            Console.Write("Enter User Password: ");
+            string pass1 = Console.ReadLine();
+            PasswordDigitCheck(pass1);
         }
         public static void FirstNameCheck(string firstName)
         {
@@ -73,6 +76,19 @@ namespace UserRegistration
             else
             {
                 Console.WriteLine("Mobile Number is invalid. Make sure to enter country code +91 before the 10 digit number");
+            }
+        }
+        public static void PasswordDigitCheck(string pass1)
+        {
+            string pattern = "^[0-9a-zA-Z]{8,}$";
+            bool validate = Regex.IsMatch(pass1, pattern);
+            if (validate)
+            {
+                Console.WriteLine("User Password entered successfully");
+            }
+            else
+            {
+                Console.WriteLine("User Password is Invalid. The password must be of atleast 8 characters.");
             }
         }
     }
