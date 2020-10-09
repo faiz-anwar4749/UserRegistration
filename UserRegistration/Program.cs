@@ -17,6 +17,9 @@ namespace UserRegistration
             Console.Write("Enter User Email ID: ");
             string emailID = Console.ReadLine();
             EmailCheck(emailID);
+            Console.Write("Enter User Mobile Number: ");
+            string mobile = Console.ReadLine();
+            MobileNumberCheck(mobile);
         }
         public static void FirstNameCheck(string firstName)
         {
@@ -57,6 +60,19 @@ namespace UserRegistration
             else
             {
                 Console.WriteLine("User Email is invalid.");
+            }
+        }
+        public static void MobileNumberCheck(string mobile)
+        {
+            string pattern = "^[+91]{2,3}[ -]*[0-9]{10}";
+            bool validate = Regex.IsMatch(mobile, pattern);
+            if (validate)
+            {
+                Console.WriteLine("Mobile Number entered successfully");
+            }
+            else
+            {
+                Console.WriteLine("Mobile Number is invalid. Make sure to enter country code +91 before the 10 digit number");
             }
         }
     }
