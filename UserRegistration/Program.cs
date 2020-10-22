@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-
 namespace UserRegistration
 {
     class Program
@@ -10,18 +9,18 @@ namespace UserRegistration
             Console.WriteLine("Welcome to User Registraton");
             Console.Write("Enter User First Name: ");
             string firstName = Console.ReadLine();
-            FirstNameCheck(firstName);
             Console.Write("Enter User Last Name: ");
             string lastName = Console.ReadLine();
-            LastNameCheck(lastName);
             Console.Write("Enter User Email ID: ");
             string emailID = Console.ReadLine();
-            EmailCheck(emailID);
             Console.Write("Enter User Mobile Number: ");
             string mobile = Console.ReadLine();
-            MobileNumberCheck(mobile);
             Console.Write("Enter User Password: ");
             string pass1 = Console.ReadLine();
+            FirstNameCheck(firstName);
+            LastNameCheck(lastName);
+            EmailCheck(emailID);
+            MobileNumberCheck(mobile);
             PasswordCheck(pass1);
         }
         public static void FirstNameCheck(string firstName)
@@ -78,17 +77,19 @@ namespace UserRegistration
                 Console.WriteLine("Mobile Number is invalid. Make sure to enter country code +91 before the 10 digit number");
             }
         }
-        public static void PasswordCheck(string pass1)
+        public static void PasswordCheck(string input)
         {
-            string pattern = "^(?=.*[A-Z])(?=.*[0-9])[0-9a-zA-Z]{8,}$";
-            bool validate = Regex.IsMatch(pass1, pattern);
-            if (validate)
+            string pattern = "(?=.*[0-9])(?=.*[!@#$%^&*?])(?=.*[A-Z]).{8,}";
+            string regex = "^(?=.*[0-9A-Za-z])[0-9A-Za-z]*[$&+,:;=?@#|'<>.-^*()%!][0-9A-Za-z]*$";
+            bool validate = Regex.IsMatch(input, pattern);
+            bool validate1 = Regex.IsMatch(input, regex);
+            if (validate && validate1)
             {
                 Console.WriteLine("User Password entered successfully");
             }
             else
             {
-                Console.WriteLine("User Password is Invalid. The password must be of atleast 8 characters and should have atleast one upper case and a numeric character.");
+                Console.WriteLine("User Password is Invalid. The password must be of atleast 8 characters and should have atleast one upper case, one numeric, and one special character.");
             }
         }
     }
