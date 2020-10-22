@@ -51,7 +51,7 @@ namespace UserRegistration
                 Console.WriteLine("User Last Name is Invalid.");
             }
         }
-        public static void EmailCheck(string emailID)
+        public static void EmailCheck(string emailID) /*UC9-will clear all email samples*/
         {
             string pattern = "(^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*[@][0-9a-zA-Z]+[.][a-zA-Z]{2,3}(.[a-zA-Z]{2})?$)";
             bool validate = Regex.IsMatch(emailID, pattern);
